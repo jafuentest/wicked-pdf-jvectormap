@@ -1,0 +1,22 @@
+<h1>Site#show</h1>
+<p>Find me in app/views/site/show.html.erb</p>
+
+<div id="world-map-gdp" style="width: 720px; height: 400px"></div>
+
+<script type="text/javascript">
+  $(function(){
+    $('#world-map-gdp').vectorMap({
+      map: 'world_mill',
+      series: {
+        regions: [{
+          values: gdpData,
+          scale: ['#C8EEFF', '#0071A4'],
+          normalizeFunction: 'polynomial'
+        }]
+      },
+      onRegionTipShow: function(e, el, code){
+        el.html(el.html()+' (GDP - '+gdpData[code]+')');
+      }
+    });
+  });
+</script>
